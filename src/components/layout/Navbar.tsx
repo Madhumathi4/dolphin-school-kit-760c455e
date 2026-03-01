@@ -8,6 +8,7 @@ const navItems = [
   { label: "About", path: "/about" },
   { label: "Achievements", path: "/achievements" },
   { label: "Gallery", path: "/gallery" },
+  { label: "Events", path: "/events-calendar" },
   { label: "Contact", path: "/contact" },
 ];
 
@@ -19,7 +20,6 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
           <Link to="/" className="flex items-center gap-2 shrink-0">
             <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-lg">D</span>
@@ -30,7 +30,6 @@ const Navbar = () => {
             </div>
           </Link>
 
-          {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <Link
@@ -47,7 +46,6 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA + Mobile toggle */}
           <div className="flex items-center gap-3">
             <Link to="/contact">
               <Button className="hidden md:inline-flex bg-primary text-primary-foreground hover:bg-primary-light font-semibold">
@@ -57,7 +55,8 @@ const Navbar = () => {
             </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 rounded-lg hover:bg-accent transition-colors"
+              className="lg:hidden p-2.5 rounded-xl hover:bg-accent transition-colors"
+              aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -73,7 +72,7 @@ const Navbar = () => {
                   key={item.path}
                   to={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                  className={`px-4 py-3.5 rounded-xl text-sm font-medium transition-colors ${
                     location.pathname === item.path
                       ? "bg-primary text-primary-foreground"
                       : "text-foreground hover:bg-accent"
@@ -83,7 +82,7 @@ const Navbar = () => {
                 </Link>
               ))}
               <Link to="/contact" onClick={() => setIsOpen(false)}>
-                <Button className="w-full mt-2 bg-primary text-primary-foreground hover:bg-primary-light">
+                <Button className="w-full mt-2 bg-primary text-primary-foreground hover:bg-primary-light h-12">
                   <Phone className="w-4 h-4 mr-2" />
                   Admission Enquiry
                 </Button>
